@@ -12,31 +12,46 @@ if (!fs.existsSync(path)) {
 const menuFunction = () => {
   const menu = `
     Usage :-
-    $ node index.js add <todo>   # Add a new todo
+    $ node index.js add <todo , deadline(YYYY-MM-DD)>   # Add a new todo
   `;
   console.log(menu);
 };
 
 const addFunction = () => {
-  const newTodo = args[3];
-  
-  if (newTodo) {
-    //const jsonString = fs.readFileSync(path);
-    //const fileData = JSON.parse(jsonString);
-    //console.log(fileData);
-    const taskToAdd = {
-      task: newTodo,
-      progress: 'undone'
-    }
-    
-    fs.writeFile(path, JSON.stringify(taskToAdd), (err) => {
-        if (err) throw err;
-    });
+  let newTodo = '';
 
-  } else {
-    console.log('No task');
+  for (let i = 3; i < args.length; i++) {
+    if (args[i].includes(',')) {
+      for (let j = 3; j < i+1; j++) {
+        newTodo += args[j] + ' ';
+      }
+      const task = newTodo.slice(0, -2).toString();
+      const deadline = args[i+1];
+
+      if (task) {
+        const taskDescription = {
+          task: task,
+          deadline: deadline,
+          progress: 'undone'
+        }
+
+        const jsonString = fs.readFileSync(path).toString();
+
+        const fileObj = {
+           id: taskDescription
+        }
+        console.log(fileObj);
+        fs.writeFile(path, JSON.stringify(fileObj) + '\n' + jsonString, (err) => {
+          if (err) throw err;
+        });
+
+        } else {
+          console.log('No task added');
+        }
+    }
   }
-};
+}
+
 
 if (args[2] === 'add') {
  //menuFunction();
