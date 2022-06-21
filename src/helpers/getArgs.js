@@ -1,4 +1,5 @@
-const { dateChecker } = require('../helpers/checkDate')
+'use strict';
+const { dateChecker } = require('../helpers/checkDate');
 
 const getArgs = (args) => {
   let newTodo = '';
@@ -17,6 +18,7 @@ const getArgs = (args) => {
           task: taskName,
           description: '-',
           deadline: deadline,
+          whenWasDone: '',
           progress: 'undone'
         }
 
