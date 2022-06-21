@@ -25,8 +25,10 @@ const deleteTask = (args) => {
         });
 
         console.log('Task was deleted:\n', task);
-    }
-  } 
+      } else if (task.task !== el.task) {
+          console.log('Task does not exist');
+      }
+    } 
   } catch(e) {
       console.log('Something went wrong. Task was not deleted')
   }
