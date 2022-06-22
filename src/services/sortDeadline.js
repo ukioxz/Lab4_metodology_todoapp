@@ -11,7 +11,7 @@ const showSortDeadline = (args) => {
   const dataStr = JSON.stringify(dataJson);
   const dataTodos = JSON.parse(dataStr);
   
-  const undoneTodos = dataTodos.filter(el => el.whenWasDone === "");
+  const undoneTodos = dataTodos.filter(el => el.progress === "undone");
 
   const sortByDate = undoneTodos.sort((a, b) => {
     let dateA = new Date(a.deadline);
