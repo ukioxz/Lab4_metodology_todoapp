@@ -16,7 +16,7 @@ const showSortDeadline = (args) => {
   const sortByDate = undoneTodos.sort((a, b) => {
     let dateA = new Date(a.deadline);
     let dateB = new Date(b.deadline);
-    return dateB-dateA;
+    return dateA-dateB;
   });
 
   for (let i = 0; i < sortByDate.length; i++)
