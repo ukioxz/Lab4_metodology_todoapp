@@ -13,12 +13,8 @@ const showSortDeadline = (args) => {
   
   const undoneTodos = dataTodos.filter(el => el.progress === "undone");
 
-  const sortByDate = undoneTodos.sort((a, b) => {
-    let dateA = new Date(a.deadline);
-    let dateB = new Date(b.deadline);
-    return dateA-dateB;
-  });
-
+  const sortByDate = undoneTodos.sort((a, b) => new Date(a.deadline - b.deadline));
+ 
   for (let i = 0; i < sortByDate.length; i++)
   {
     const todo = sortByDate[i];
