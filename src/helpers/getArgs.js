@@ -12,7 +12,7 @@ const getArgs = (args) => {
       const taskName = newTodo.slice(0, -2).toString();
       const deadline = args[i+1];
 
-      if (dateChecker(new Date(deadline)) && taskName !== '') {
+      if (dateChecker(deadline) && taskName !== '') {
         const taskObj = {
           id: 0,
           task: taskName,

@@ -2,13 +2,27 @@
 const fs = require('fs');
 const path = '../../db/db.json';
 const { dateChecker } = require('../helpers/checkDate');
+const { getCurrentDate } = require('../helpers/getCurrentDate');
 const db = require(path);
 
 const markAsDone = (args) => {
     const id = parseInt(args[3]);
     const date = args[4];
     
-    if (dateChecker(new Date(date)) && !isNaN(id)) {
+    if (date === undefined) {
+        db.todos.forEach(task => {
+            if (task.id === id) {
+                task.whenWasDone = getCurrentDate();
+                task.progress = 'done';
+
+                fs.writeFileSync(path, JSON.stringify(db), (err) => {
+                    if (err) throw err;
+                });
+            
+                console.log('Your task is marked as done!:\n', task)
+            }
+        });
+    } else if (dateChecker(new Date(date)) && !isNaN(id)) {
         db.todos.forEach(task => {
             if (task.id === id) {
                 task.whenWasDone = date;

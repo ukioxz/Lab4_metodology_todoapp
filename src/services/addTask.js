@@ -1,12 +1,13 @@
 'use strict';
 const fs = require('fs');
 const path = '../../db/db.json';
-const { getArgs } = require('../helpers/getArgs')
+const { getArgs } = require('../helpers/getArgs');
+const { getCurrentDate } = require('../helpers/getCurrentDate');
 const db = require(path);
 
 const addFunction = (args) => {
   const task = getArgs(args);
-  const currDate = new Date().toISOString().slice(0, 10);
+  const currDate = getCurrentDate();
   
   try {
     db.counter++;
