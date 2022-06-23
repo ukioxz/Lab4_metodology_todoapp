@@ -6,21 +6,18 @@ const addDescription = require('./addDescription');
 const showAllTask = require('./showAllTask');
 const deleteTask = require('./delete');
 const markAsDone = require('./markAsDone');
-const {showOverdue, defineOverdued} = require('./showOverdue');
-const showSortDeadline = require('./sortDeadline')
-const showReportTodo = require('./reportTodo')
+const showOverdue = require('./showOverdue');
+const showSortDeadline = require('./sortDeadline');
+const showReportTodo = require('./reportTodo');
+const updateTask = require('./update');
 const showAmounts = require('./showAmount');
-const showStatistics = require('./showStatistics')
+const showStatistics = require('./showStatistics');
+const { showMenu } = require('../helpers/consoleMenu')
 
-const commands = ['add', 'describe', 'ls', 'delete', 'done', 'showOverdue', 'undone', 'report', 'amounts', 'statistic']
-const methods = [addFunction, addDescription, showAllTask, deleteTask, 
-  markAsDone, showOverdue, showSortDeadline, showReportTodo, showAmounts, showStatistics]
-
-
-// node main.js add <todo: deadline(YYYY-MM-DD)>   # Add a new todo
-// node main.js describe <id> <description>   # Add description to a todo
-// node main.js delete <taskName> <date(YYYY-MM-DD)>   # Delete task
-// node main.js done <id> *<date(YYYY-MM-DD)>   # Mark task as done *optional
+const commands = ['add', 'describe', 'ls', 'delete', 'done', 'showOverdue', 
+                  'undone', 'report', 'update', 'amounts', 'statistic'];
+const methods = [addFunction, addDescription, showAllTask, deleteTask, markAsDone, 
+                  showOverdue, showSortDeadline, showReportTodo, updateTask, showAmounts, showStatistics];
 
 const runTodoList = () => {
     for(let el of commands) {
@@ -28,4 +25,5 @@ const runTodoList = () => {
     }
 }
 
+showMenu();
 runTodoList();
