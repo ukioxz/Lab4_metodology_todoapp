@@ -39,6 +39,9 @@ const deleteTask = (args) => {
         console.log('Task was deleted\n', deletedTask);
         break
       }
+    }
+    if(db.todos.length==0) {
+      console.log('Does not exist')
     } 
   } catch(e) {
       console.log('Something went wrong.')
