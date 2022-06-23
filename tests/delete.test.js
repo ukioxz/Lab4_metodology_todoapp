@@ -9,7 +9,7 @@ describe('test for delete method', () => {
   });
 
   test('should reduce counter', () => {
-    deleteTask([ , , , 2], database)
+    deleteTask([ , , , 1], database)
     expect(database.counter).toBe(database.counter--);
   });
 

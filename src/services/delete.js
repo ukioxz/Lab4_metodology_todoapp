@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = '../../db/db.json';
+const db = require(path);
 let exist;
 
 const getTask = (id, database) => {
@@ -40,6 +41,7 @@ const deleteTask = (args, database) => {
       }
     }
     if(database.todos.length == 0) {
+      exist = false;
       console.log('Does not exist')
     } 
     return exist;
