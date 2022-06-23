@@ -2,49 +2,49 @@
 
 const fs = require('fs');
 const path = '../../db/db.json';
-const db = require(path);
+let exist;
 
-if (!fs.existsSync(path)) {
-  let createStream = fs.createWriteStream(path);
-  createStream.end();
-}
-
-const getTask = (id) => {
-  for (let el of db.todos) {
+const getTask = (id, database) => {
+  for (let el of database.todos) {
     if(el.id == id) return el
   }
 }
 
-const deleteTask = (args) => {
+const deleteTask = (args, database) => {
   let taskIndex;
   let deletedTask;
   let currTask;
+
   try {
-    for(let el of db.todos) {
-      currTask = getTask(args[3]);
+    for(let el of database.todos) {
+      currTask = getTask(args[3], database);
       if(!currTask) {
         console.log('Does not exist') 
+        exist = false;
         break
       }
       if(args[3] == el.id) {
-        taskIndex = db.todos.indexOf(el)
-        db.todos.splice(taskIndex,1)
-        db.counter--;
-  
-        fs.writeFileSync(path, JSON.stringify(db), (err) => {
-          if (err) throw err;
-        });
+        taskIndex = database.todos.indexOf(el)
+        database.todos.splice(taskIndex,1)
+        database.counter--;
+
+        if(database == db) {
+          fs.writeFileSync(path, JSON.stringify(database), (err) => {
+            if (err) throw err;
+          });
+        }
 
         deletedTask = el;
         console.log('Task was deleted\n', deletedTask);
         break
       }
     }
-    if(db.todos.length==0) {
+    if(database.todos.length == 0) {
       console.log('Does not exist')
     } 
+    return exist;
   } catch(e) {
-      console.log('Something went wrong.')
+      console.log(e)
   }
 }
 
