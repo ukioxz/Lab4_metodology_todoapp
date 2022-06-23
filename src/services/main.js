@@ -6,13 +6,14 @@ const addDescription = require('./addDescription');
 const showAllTask = require('./showAllTask');
 const deleteTask = require('./delete');
 const markAsDone = require('./markAsDone');
-const showOverdue = require('./showOverdue');
+const {showOverdue, defineOverdued} = require('./showOverdue');
 const showSortDeadline = require('./sortDeadline')
 const showReportTodo = require('./reportTodo')
+const showAmounts = require('./showAmount');
 
-const commands = ['add', 'describe', 'ls', 'delete', 'done', 'showOverdue', 'undone', 'report']
+const commands = ['add', 'describe', 'ls', 'delete', 'done', 'showOverdue', 'undone', 'report', 'amounts']
 const methods = [addFunction, addDescription, showAllTask, deleteTask, 
-  markAsDone, showOverdue, showSortDeadline, showReportTodo]
+  markAsDone, showOverdue, showSortDeadline, showReportTodo, showAmounts]
 
 
 // node main.js add <todo: deadline(YYYY-MM-DD)>   # Add a new todo
