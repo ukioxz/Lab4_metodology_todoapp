@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = '../../db/db.json';
+const db = require(path);
 let exist;
 
 const getTask = (id, database) => {
