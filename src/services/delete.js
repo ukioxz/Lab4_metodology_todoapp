@@ -2,7 +2,6 @@
 
 const fs = require('fs');
 const path = '../../db/db.json';
-const { getArgs } = require('../helpers/getArgs')
 const db = require(path);
 
 if (!fs.existsSync(path)) {
@@ -10,13 +9,24 @@ if (!fs.existsSync(path)) {
   createStream.end();
 }
 
-const deleteTask = (args) => {
-  const task = getArgs(args);
-  let taskIndex;
+const getTask = (id) => {
+  for (let el of db.todos) {
+    if(el.id == id) return el
+  }
+}
 
+const deleteTask = (args) => {
+  let taskIndex;
+  let deletedTask;
+  let currTask;
   try {
     for(let el of db.todos) {
-      if(task.task == el.task && task.deadline == el.deadline) {
+      currTask = getTask(args[3]);
+      if(!currTask) {
+        console.log('Does not exist') 
+        break
+      }
+      if(args[3] == el.id) {
         taskIndex = db.todos.indexOf(el)
         db.todos.splice(taskIndex,1)
         db.counter--;
@@ -25,15 +35,13 @@ const deleteTask = (args) => {
           if (err) throw err;
         });
 
-        console.log('Task was deleted:\n', task);
-      } else if (task.task !== el.task) {
-          console.log('Task does not exist');
+        deletedTask = el;
+        console.log('Task was deleted\n', deletedTask);
       }
     } 
   } catch(e) {
-      console.log('Something went wrong. Task was not deleted')
+      console.log('Something went wrong.')
   }
-  
 }
 
 module.exports = deleteTask;
