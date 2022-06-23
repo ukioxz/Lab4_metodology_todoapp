@@ -18,6 +18,7 @@ const getArgs = (args) => {
           task: taskName,
           description: '-',
           deadline: deadline,
+          whenWasCreated: '',
           whenWasDone: '',
           progress: 'undone'
         }

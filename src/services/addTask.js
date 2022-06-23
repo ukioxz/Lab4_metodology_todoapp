@@ -6,10 +6,12 @@ const db = require(path);
 
 const addFunction = (args) => {
   const task = getArgs(args);
+  const currDate = new Date().toISOString().slice(0, 10);
   
   try {
     db.counter++;
     task.id = db.counter;
+    task.whenWasCreated = currDate;
     db.todos.push(task);
             
     fs.writeFileSync(path, JSON.stringify(db), (err) => {
