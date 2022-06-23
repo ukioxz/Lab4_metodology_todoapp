@@ -1,0 +1,25 @@
+{
+  "name": "lab4_metodology_todoapp",
+  "version": "1.0.0",
+  "description": "CLI todo app",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukioxz/Lab4_metodology_todoapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ukioxz/Lab4_metodology_todoapp/issues"
+  },
+  "homepage": "https://github.com/ukioxz/Lab4_metodology_todoapp#readme",
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
+}
