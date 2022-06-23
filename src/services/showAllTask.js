@@ -13,7 +13,7 @@ const showAllTask = (args) => {
   for (let i = 0; i < dataTodos.length; i++)
   {
     const todo = dataTodos[i];
-    console.log(`${todo.task}: ${todo.description} ${todo.deadline} ${todo.progress}`);
+    console.log(`${todo.id}:${todo.task} ${todo.description} ${todo.deadline} ${todo.progress}`);
   }
 }
 
