@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = '../../db/db.json';
 const { getArgs } = require('../helpers/getArgs')
 const db = require(path);
-let overdued = 0;
 
 if (!fs.existsSync(path)) {
   let createStream = fs.createWriteStream(path);
@@ -26,9 +25,13 @@ const defineOverdued = () => {
 }
 
 const showOverdue = (args) => {
-  let filteredArr = defineOverdued();
-  for(let el of filteredArr) {
-    console.log(`${el.task}: ${el.description} ${el.deadline} ${el.progress}`);
+  try {
+    let filteredArr = defineOverdued();
+    for(let el of filteredArr) {
+      console.log(`${el.task}: ${el.description} ${el.deadline} ${el.progress}`);
+    }
+  } catch(e) {
+      console.log('Something went wrong');
   }
 }
 
