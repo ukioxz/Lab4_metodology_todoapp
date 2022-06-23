@@ -10,12 +10,14 @@ const showOverdue = require('./showOverdue');
 const showSortDeadline = require('./sortDeadline');
 const showReportTodo = require('./reportTodo');
 const updateTask = require('./update');
+const showAmounts = require('./showAmount');
+const showStatistics = require('./showStatistics');
 const { showMenu } = require('../helpers/consoleMenu')
 
 const commands = ['add', 'describe', 'ls', 'delete', 'done', 'showOverdue', 
-                  'undone', 'report', 'update'];
+                  'undone', 'report', 'update', 'amounts', 'statistic'];
 const methods = [addFunction, addDescription, showAllTask, deleteTask, markAsDone, 
-                  showOverdue, showSortDeadline, showReportTodo, updateTask];
+                  showOverdue, showSortDeadline, showReportTodo, updateTask, showAmounts, showStatistics];
 
 const runTodoList = () => {
     for(let el of commands) {

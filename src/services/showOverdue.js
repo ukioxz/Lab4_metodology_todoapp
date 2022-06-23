@@ -10,7 +10,7 @@ if (!fs.existsSync(path)) {
   createStream.end();
 }
 
-const showOverdue = (args) => {
+const defineOverdued = () => {
   let currDate = new Date();
 
   const compareDates = (first, second) => {
@@ -20,12 +20,20 @@ const showOverdue = (args) => {
     let deadlineDate = new Date(el.deadline)
     return compareDates(deadlineDate, currDate) && el.progress === "undone";
   }
-  let filteredArr = db.todos.filter(callback)
   
-  for(let el of filteredArr) {
-    console.log(`${el.task}: ${el.description} ${el.deadline} ${el.progress}`);
-  }
-
+  return db.todos.filter(callback)
 }
 
-module.exports = showOverdue;
+const showOverdue = (args) => {
+  try {
+    let filteredArr = defineOverdued();
+    for(let el of filteredArr) {
+      console.log(`${el.task}: ${el.description} ${el.deadline} ${el.progress}`);
+    }
+  } catch(e) {
+      console.log('Something went wrong');
+  }
+}
+
+
+module.exports = {showOverdue, defineOverdued};
