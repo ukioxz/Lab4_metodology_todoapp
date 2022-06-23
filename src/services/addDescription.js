@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = '../../db/db.json';
 const db = require(path);
+const { displayTask } = require('../helpers/displayTask');
 
 const addDescription = (args) => {
     let info = '';
@@ -19,7 +20,8 @@ const addDescription = (args) => {
           if (err) throw err;
         });
         
-        console.log('Description is added:\n', task)
+        console.log('Description is added:');
+        displayTask(task);
       }
     })
   }

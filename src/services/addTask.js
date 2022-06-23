@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = '../../db/db.json';
 const { getArgs } = require('../helpers/getArgs');
 const { getCurrentDate } = require('../helpers/getCurrentDate');
+const { displayTask } = require('../helpers/displayTask');
 const db = require(path);
 
 const addFunction = (args) => {
@@ -19,7 +20,8 @@ const addFunction = (args) => {
       if (err) throw err;
     });
 
-    console.log('Task is added:\n', task);
+    console.log('Task is added:');
+    displayTask(task);
     console.log(`If you want to add description: $ node main.js describe <id> <description>`);
   } catch (err) {
     console.log('An error occurred... Please try again')

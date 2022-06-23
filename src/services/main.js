@@ -6,7 +6,7 @@ const addDescription = require('./addDescription');
 const showAllTask = require('./showAllTask');
 const deleteTask = require('./delete');
 const markAsDone = require('./markAsDone');
-const showOverdue = require('./showOverdue');
+const { showOverdue } = require('./showOverdue');
 const showSortDeadline = require('./sortDeadline');
 const showReportTodo = require('./reportTodo');
 const updateTask = require('./update');
@@ -31,5 +31,4 @@ const runTodoList = () => {
     }
 }
 
-showMenu();
 runTodoList();
