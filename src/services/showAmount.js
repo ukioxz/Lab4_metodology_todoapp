@@ -15,16 +15,20 @@ if (!fs.existsSync(path)) {
 }
 
 const showAmounts = (args) => {
-  let overduedTasks = defineOverdued();
-  let overdued = overduedTasks.length;
+  try {
+    let overduedTasks = defineOverdued();
+    let overdued = overduedTasks.length;
 
-  for(let el of db.todos) {
-    if(el.progress == "undone") undoneCounter+=1
-    if(el.progress == "done") doneCounter++
+    for(let el of db.todos) {
+      if(el.progress == "undone") undoneCounter+=1
+      if(el.progress == "done") doneCounter++
+    }
+    console.log(`Number of undone tasks: ${undoneCounter}`);
+    console.log(`Number of done tasks: ${doneCounter}`);
+    console.log(`Number of overdued tasks: ${overdued}`);
+  } catch(e) {
+    console.log('Something went wrong');
   }
-  console.log(`Number of undone tasks: ${undoneCounter}`)
-  console.log(`Number of done tasks: ${doneCounter}`)
-  console.log(`Number of overdued tasks: ${overdued}`)
 }
 
 module.exports = showAmounts;
