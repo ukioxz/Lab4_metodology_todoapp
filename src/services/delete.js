@@ -37,6 +37,7 @@ const deleteTask = (args) => {
 
         deletedTask = el;
         console.log('Task was deleted\n', deletedTask);
+        break
       }
     } 
   } catch(e) {
