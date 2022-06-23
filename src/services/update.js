@@ -1,0 +1,56 @@
+'use strict';
+const fs = require('fs');
+const path = '../../db/db.json';
+const { dateChecker } = require('../helpers/checkDate');
+const db = require(path);
+
+const updateDB = (task) => {
+    fs.writeFileSync(path, JSON.stringify(db), (err) => {
+        if (err) throw err;
+    });
+}
+
+const updateTitle = (task, args) => {
+    const newTitle = args[5];
+    task.task = newTitle;
+}
+
+const updateDescription = (task, args) => {
+    const startIndex = args.indexOf(args[5]);
+    const endIndex = args.length;
+    const arr = args.slice(startIndex, endIndex);
+    let info = '';
+    for (const el of arr) {
+        info += el + ' ';
+    }
+    task.description = info.trim();
+}
+
+const updateDeadline = (task, args) => {
+    const newDeadline = args[5];
+    if (dateChecker(newDeadline)) {
+        task.deadline = newDeadline;
+    } else {
+        console.log('Incorrect deadline is passed!');
+    }
+}
+
+const updateTask = (args) => {
+    const id = parseInt(args[4]);
+    const commands = ['title', 'description', 'deadline'];
+    const func = [updateTitle, updateDescription, updateDeadline];
+
+    for (const el of commands) {
+        if (args[3] === el) {
+            db.todos.forEach(task => {
+                if (task.id === id) {
+                    func[commands.indexOf(el)](task, args);
+                    updateDB(task);
+                    console.log('Your task is updated!:\n', task);
+                }
+            });
+        }
+    }
+}
+
+module.exports = updateTask;
