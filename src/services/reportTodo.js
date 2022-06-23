@@ -21,4 +21,10 @@ const showReportTodo = (args) => {
   }
 }
 
-module.exports = showReportTodo;
+  const dataJson = data.todos;
+  const dataStr = JSON.stringify(dataJson);
+  const dataTodos = JSON.parse(dataStr);
+
+  const doneTodos = dataTodos.filter(el => el.progress === "done");
+
+module.exports = { showReportTodo, doneTodos};
