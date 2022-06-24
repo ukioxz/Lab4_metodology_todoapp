@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = '../../db/db.json';
 const { dateChecker } = require('../helpers/checkDate');
+const { displayTask } = require('../helpers/displayTask');
 const db = require(path);
 
 const updateDB = (task) => {
@@ -46,7 +47,8 @@ const updateTask = (args) => {
                 if (task.id === id) {
                     func[commands.indexOf(el)](task, args);
                     updateDB(task);
-                    console.log('Your task is updated!:\n', task);
+                    console.log('Your task is updated!:');
+                    displayTask(task);
                 }
             });
         }
