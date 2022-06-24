@@ -29,6 +29,7 @@ const runTodoList = () => {
         methods[commands.indexOf(el)](args, db);
       } else if (args[2] === undefined) {
         showMenu();
+        break;
       }
     }
 }
