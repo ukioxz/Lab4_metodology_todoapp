@@ -1,21 +1,22 @@
-# Lab4_metodology_todoapp
-CLI todo app
+# CLI todo app
 
-CLI todo App for planning personal schedule, which allows you to control tasks by their progress, deadlines and duration of fulfillment. 
+CLI todo App is for planning personal schedule, which allows you to control tasks by their progress, deadlines and duration of fulfillment. 
 
 ## Our Project team
-- **Vasylieva Maryna** - team lead 
-- **Sanina Anastasiia** - developer 
-- **Lehenka Julia** - developer 
+- [Vasylieva Maryna](https://github.com/ukioxz) - team lead 
+- [Sanina Anastasiia](https://github.com/anastasiiasanina) - developer 
+- [Lehenka Julia](https://github.com/julikss) - developer 
 
 ## Description
 This todo app was made with the use of some methods for tasks management. 
 They are: 
 
-- **Add:** Push task in the db in json format. 
+- **Add:** Push task to the db in json format. 
+- **Describe:** Add description to the task. 
 - **Delete:** Deletes task by its id. 
 - **Update:** Updates information about tasks(description, title, deadline) 
-- **Ls:** Show all tasks with titles, descriptions, deadlines and when they were done.  
+- **Ls:** Show all tasks with titles, descriptions, deadlines and when they were done.
+- **Done:** Mark task as completed. 
 - **Undone:** Show all uncompleted tasks with deadlines, sorted by removing deadlines. 
 - **Report:** Show completed tasks and when they are completed. 
 - **Amount:** Show how many tasks are done, undone and overdue. 
