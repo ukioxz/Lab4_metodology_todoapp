@@ -14,31 +14,27 @@ const checkDone = (database) => {
 }
 
 const clearDone = (args, database) => {
-  let taskIndex;
-  let doneAmount = checkDone(database);
   try {
-      for(let el of database.todos) {
-        if(doneAmount == 0) {
-          console.log('No done tasks')
-          break;
+    let doneAmount = checkDone(database);
+        if(doneAmount == 0 && database.todos.length > 0) {
+          console.log('No done tasks');
+          return
         }
-        if(el.progress == "done") {
-          taskIndex = database.todos.indexOf(el);
-          database.todos.splice(taskIndex, 1);
-          database.counter--
 
-          if(database == db) {
-            fs.writeFileSync(path, JSON.stringify(database), (err) => {
-              if (err) throw err;
-            });
-          }
-          ls(args, database);
-        }
+      let filteredDb = database.todos.filter(el => el.progress == "undone");
+      database.todos = filteredDb;
+      database.counter = filteredDb.length;
+
+      if(database == db) {
+        fs.writeFileSync(path, JSON.stringify(database), (err) => {
+          if (err) throw err;
+        });
       }
-    
-    if(database.todos.length == 0) {
-      console.log('No tasks in the list')
-    } 
+      if(database.todos.length == 0) {
+        console.log('No tasks in the list');
+        return
+      } 
+      ls(args, db);
   } catch(e) {
       console.log(e)
   }
