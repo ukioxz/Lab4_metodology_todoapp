@@ -4,9 +4,9 @@ CLI todo app
 CLI todo App for planning personal schedule, which allows you to control tasks by their progress, deadlines and duration of fulfillment. 
 
 ## Our Project team
-Vasylieva Maryna - team lead 
-Sanina Anastasiia - developer 
-Lehenka Julia - developer 
+- **Vasylieva Maryna** - team lead 
+- **Sanina Anastasiia** - developer 
+- **Lehenka Julia** - developer 
 
 ## Description
 This todo app was made with the use of some methods for tasks management. 
