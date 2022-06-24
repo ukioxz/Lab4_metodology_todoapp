@@ -1,28 +1,23 @@
 'use strict';
 
-const fs = require('fs');
-const data = require('../../db/db.json');
-const { getArgs } = require('../helpers/getArgs')
+const db = require('../../db/db.json');
 
 const showStatistics = (args) => {
-  const task = getArgs(args);
   
-  const dataJson = data.todos;
-  const dataStr = JSON.stringify(dataJson);
-  const dataTodos = JSON.parse(dataStr);
-
-  const doneTodos = dataTodos.filter(el => el.progress === "done");
+  const data = db.todos;
+  const doneTodos = data.filter(el => el.progress === "done");
 
   for (let i = 0; i < doneTodos.length; i++)
   { 
     const todo = doneTodos[i];
     const countTimeTask = Math.abs(todo.whenWasDone[i] - todo.whenWasCreated[i])
     const timeTask = countTimeTask + 1;
+    console.log('\x1b[33m%s\x1b[0m', 'Statistic of tasks:')
     if (timeTask == 1){
-        console.log(`${todo.task} within ${timeTask} day`); 
-    } else {
-        console.log(`${todo.task} within ${timeTask} days`); 
-    }
+      console.log(`${todo.task} within ${timeTask} day`); 
+  } else {
+      console.log(`${todo.task} within ${timeTask} days`); 
+  }
   }
  
 }

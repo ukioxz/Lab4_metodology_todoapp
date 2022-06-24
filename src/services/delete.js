@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = '../../db/db.json';
 const db = require(path);
+const { displayTask } = require('../helpers/displayTask');
 let exist;
 
 const getTask = (id, database) => {
@@ -36,7 +37,8 @@ const deleteTask = (args, database) => {
         }
 
         deletedTask = el;
-        console.log('Task was deleted\n', deletedTask);
+        console.log('This task was deleted:');
+        displayTask(deletedTask);
         break
       }
     }

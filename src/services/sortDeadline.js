@@ -1,36 +1,34 @@
 'use strict';
 
-const fs = require('fs');
-const data = require('../../db/db.json');
-const { getArgs } = require('../helpers/getArgs')
+const db = require('../../db/db.json');
+const { displayTask } = require('../helpers/displayTask');
 
-const showSortDeadline = (args) => {
-  const task = getArgs(args);
-  
-  let date = new Date();
-  let dateStr = date.toISOString().split('T')[0];
-  
-  const dataJson = data.todos;
-  const dataStr = JSON.stringify(dataJson);
-  const dataTodos = JSON.parse(dataStr);
+const showSortDeadline = (args) => {  
+  const date = new Date();
+  const dateStr = date.toISOString().split('T')[0];
+  const data = db.todos;
+  const undoneTodos = data.filter(el => el.progress === "undone");
 
-  const undoneTodos = dataTodos.filter(el => el.progress === "undone");
   const sortByDate = undoneTodos.sort((a, b) => {
     let dateA = new Date(a.deadline);
     let dateB = new Date(b.deadline);
     return dateA-dateB;
   });
- 
-  for (let i = 0; i < sortByDate.length; i++)
-  {
-    let sortedTodos = [];
+
+  let sortedTodos = [];
+  for (let i = 0; i < sortByDate.length; i++) {
     const todo = sortByDate[i];
-    const todosDeadline = sortedTodos.push(`${todo.deadline}`)
-    let todosStr = sortedTodos.join();
-    if (dateStr <= todosStr) {
-      console.log(`${todo.task}: ${todo.description} ${todo.deadline} ${todo.progress}`);
+    if (dateStr <= todo.deadline) {
+      sortedTodos.push(todo);
+    }
+    
+    if (i === sortByDate.length-1) {
+      const tableData = sortedTodos.reduce((acc, {id, ...x}) => { acc[id] = x; return acc}, {});
+      console.log('Sorted tasks by deadlines:');
+      console.table(tableData);
     }
   }
+  
 }
 
 module.exports = showSortDeadline;
