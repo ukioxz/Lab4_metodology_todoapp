@@ -8,24 +8,20 @@ let {showOverdue, defineOverdued} = require('./showOverdue');
 let doneCounter = 0;
 let undoneCounter = 0;
 
-
-if (!fs.existsSync(path)) {
-  let createStream = fs.createWriteStream(path);
-  createStream.end();
-}
-
-const showAmounts = (args) => {
+const showAmounts = (database) => {
   try {
     let overduedTasks = defineOverdued();
     let overdued = overduedTasks.length;
 
-    for(let el of db.todos) {
-      if(el.progress == "undone") undoneCounter+=1
+    for(let el of database.todos) {
+      if(el.progress == "undone") undoneCounter++
       if(el.progress == "done") doneCounter++
     }
     console.log(`Number of undone tasks: ${undoneCounter}`);
     console.log(`Number of done tasks: ${doneCounter}`);
     console.log(`Number of overdued tasks: ${overdued}`);
+    let res = [doneCounter, undoneCounter, overdued];
+    return res;
   } catch(e) {
     console.log('Something went wrong');
   }
