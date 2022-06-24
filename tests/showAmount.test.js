@@ -1,9 +1,9 @@
 const { expect } = require('@jest/globals');
 const showAmount = require('../src/services/showAmount')
 const database = require('../db/testDb');
-const res = showAmount(database);
+const res = showAmount([], database);
 
-describe('test for delete method', () => {
+describe('test for showAmount method', () => {
   test('should return number of done', () => {
     expect(res[0]).toBe(0);
   });
@@ -13,6 +13,6 @@ describe('test for delete method', () => {
   });
 
   test('should return number of overdued', () => {   
-    expect(res[2]).toBe(0);
+    expect(res[2]).toBe(1);
   });
 });

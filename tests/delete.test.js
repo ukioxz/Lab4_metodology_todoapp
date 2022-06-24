@@ -15,7 +15,6 @@ describe('test for delete method', () => {
 
   test('should check type of argument', () => {
     let res = deleteTask([ , , , 5], database);
-    
     expect(res).toBe(false);
   });
 });
