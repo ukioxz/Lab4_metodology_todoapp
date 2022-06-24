@@ -6,19 +6,21 @@ const { getCurrentDate } = require('../helpers/getCurrentDate');
 const { displayTask } = require('../helpers/displayTask');
 const db = require(path);
 
-const addFunction = (args) => {
+const addFunction = (args, database) => {
   const task = getArgs(args);
   const currDate = getCurrentDate();
   
   try {
-    db.counter++;
-    task.id = db.counter;
+    database.counter++;
+    task.id = database.counter;
     task.whenWasCreated = currDate;
-    db.todos.push(task);
-            
-    fs.writeFileSync(path, JSON.stringify(db), (err) => {
-      if (err) throw err;
-    });
+    database.todos.push(task);
+
+    if(database == db) {
+      fs.writeFileSync(path, JSON.stringify(database), (err) => {
+        if (err) throw err;
+      });
+    }
 
     console.log('Task is added:');
     displayTask(task);

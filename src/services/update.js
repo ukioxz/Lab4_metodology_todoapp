@@ -5,10 +5,12 @@ const { dateChecker } = require('../helpers/checkDate');
 const { displayTask } = require('../helpers/displayTask');
 const db = require(path);
 
-const updateDB = (task) => {
-    fs.writeFileSync(path, JSON.stringify(db), (err) => {
-        if (err) throw err;
-    });
+const updateDB = (task, database) => {
+    if(database == db) {
+        fs.writeFileSync(path, JSON.stringify(database), (err) => {
+            if (err) throw err;
+        });
+    }
 }
 
 const updateTitle = (task, args) => {
@@ -36,17 +38,17 @@ const updateDeadline = (task, args) => {
     }
 }
 
-const updateTask = (args) => {
+const updateTask = (args, database) => {
     const id = parseInt(args[4]);
     const commands = ['title', 'description', 'deadline'];
     const func = [updateTitle, updateDescription, updateDeadline];
 
     for (const el of commands) {
         if (args[3] === el) {
-            db.todos.forEach(task => {
+            database.todos.forEach(task => {
                 if (task.id === id) {
                     func[commands.indexOf(el)](task, args);
-                    updateDB(task);
+                    updateDB(task, database);
                     console.log('Your task is updated!:');
                     displayTask(task);
                 }
