@@ -1,23 +1,15 @@
 'use strict';
 
-const fs = require('fs');
-const data = require('../../db/db.json');
-const { getArgs } = require('../helpers/getArgs')
+const db = require('../../db/db.json');
 
 const showReportTodo = (args) => {
-  const task = getArgs(args);
-  
-  const dataJson = data.todos;
-  const dataStr = JSON.stringify(dataJson);
-  const dataTodos = JSON.parse(dataStr);
-
-  const doneTodos = dataTodos.filter(el => el.progress === "done");
+  const doneTodos = db.todos.filter(el => el.progress === "done");
  
   for (let i = 0; i < doneTodos.length; i++)
   {
     const todo = doneTodos[i];
-    console.log(`${todo.task}: ${todo.description} done:${todo.whenWasDone}`);
-    
+    console.log('\x1b[35m%s\x1b[0m', 'Completed tasks:')
+    console.log(`- ${todo.task} is done on ${todo.whenWasDone}`);
   }
 }
 

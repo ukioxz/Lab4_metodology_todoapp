@@ -12,6 +12,7 @@ const showStatistics = (args) => {
     const todo = doneTodos[i];
     const countTimeTask = Math.abs(todo.whenWasDone[i] - todo.whenWasCreated[i])
     const timeTask = countTimeTask + 1;
+    console.log('\x1b[33m%s\x1b[0m', 'Statistic of tasks:')
     if (timeTask == 1){
       console.log(`${todo.task} within ${timeTask} day`); 
   } else {
