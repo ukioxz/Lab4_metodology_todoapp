@@ -14,6 +14,7 @@ They are:
 - **Add:** Push task to the db in json format. 
 - **Describe:** Add description to the task. 
 - **Delete:** Deletes task by its id. 
+- **Clear:** Deletes all done tasks. 
 - **Update:** Updates information about tasks(description, title, deadline) 
 - **Ls:** Show all tasks with titles, descriptions, deadlines and when they were done.
 - **Done:** Mark task as completed. 
