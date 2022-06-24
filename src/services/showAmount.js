@@ -20,6 +20,7 @@ const showAmounts = (args, database) => {
     console.log(`Number of undone tasks: ${undoneCounter}`);
     console.log(`Number of done tasks: ${doneCounter}`);
     console.log(`Number of overdued tasks: ${overdued}`);
+    
     let res = [doneCounter, undoneCounter, overdued];
     return res;
   } catch(e) {
