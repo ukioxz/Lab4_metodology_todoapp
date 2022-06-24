@@ -34,6 +34,10 @@ They are:
 ```bash
 git clone https://github.com/ukioxz/Lab4_metodology_todoapp.git
 ```
+#### 3. Open folder with main.js in your terminal:
+```bash
+cd src/services
+```
 #### 3. Run main file with further instructions:
 ```bash
 node main.js
