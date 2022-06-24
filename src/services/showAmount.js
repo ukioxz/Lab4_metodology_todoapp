@@ -1,16 +1,16 @@
 'use strict';
 
 const fs = require('fs');
-const path = '../../db/db.json';
+//const path = '../../db/db.json';
 const { getArgs } = require('../helpers/getArgs')
-const db = require(path);
+//const db = require(path);
 let {showOverdue, defineOverdued} = require('./showOverdue');
 let doneCounter = 0;
 let undoneCounter = 0;
 
-const showAmounts = (database) => {
+const showAmounts = (args, database) => {
   try {
-    let overduedTasks = defineOverdued();
+    let overduedTasks = defineOverdued(database);
     let overdued = overduedTasks.length;
 
     for(let el of database.todos) {

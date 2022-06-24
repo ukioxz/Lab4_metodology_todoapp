@@ -5,7 +5,7 @@ const path = '../../db/db.json';
 const { getArgs } = require('../helpers/getArgs')
 const db = require(path);
 
-const defineOverdued = () => {
+const defineOverdued = (database) => {
   let currDate = new Date();
 
   const compareDates = (first, second) => {
@@ -16,15 +16,16 @@ const defineOverdued = () => {
     return compareDates(deadlineDate, currDate) && el.progress === "undone";
   }
   
-  return db.todos.filter(callback)
+  return database.todos.filter(callback)
 }
 
-const showOverdue = (args) => {
+const showOverdue = (args, database) => {
   try {
-    let filteredArr = defineOverdued();
+    let filteredArr = defineOverdued(database);
     for(let el of filteredArr) {
       console.log(`${el.task}: ${el.description} ${el.deadline} ${el.progress}`);
     }
+    return filteredArr;
   } catch(e) {
       console.log('Something went wrong');
   }
