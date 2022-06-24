@@ -29,7 +29,7 @@ describe('test for delete method', () => {
                             {"id":4,"task":"task","description":"-","deadline":"2022-09-25","whenWasCreated":"2022-06-23","whenWasDone":"","progress":"undone"},
                             {"id":5,"task":"task","description":"-","deadline":"2022-09-15","whenWasCreated":"2022-06-23","whenWasDone":"","progress":"undone"}
                           ],
-                    "counter":3
+                    "counter":5
                     };
     let res = deleteTask([ , , , 6], database);
     expect(res).toBe(false);
