@@ -1,13 +1,5 @@
 'use strict';
 
-// node main.js add <todo: deadline(YYYY-MM-DD)>   # Add a new todo
-// node main.js describe <id> <description>   # Add description to a todo
-// node main.js delete <taskName> <date(YYYY-MM-DD)>   # Delete task
-// node main.js done <id> *<date(YYYY-MM-DD)>   # Mark task as done *optional
-//$ node main.js update title <id> <name> # Update task title
-//$ node main.js update description <id> <description> # Update description
-//$ node main.js update deadline <id> <deadline(YYYY-MM-DD)> # Update deadline
-
 const showMenu = () => {
     const intro = '\nWelcome to our todo app!';
     const info = 'All instructions of the usage are below';
