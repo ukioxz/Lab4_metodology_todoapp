@@ -12,16 +12,17 @@ const showReportTodo = require('./reportTodo');
 const updateTask = require('./update');
 const showAmounts = require('./showAmount');
 const showStatistics = require('./showStatistics');
+const clear = require('./clear')
 const { showMenu } = require('../helpers/consoleMenu')
 const path = '../../db/db.json';
 const db = require(path);
 
 const commands = ['add', 'describe', 'ls', 'delete', 'done', 'showOverdue',
-                  'undone', 'report', 'update', 'amounts', 'statistic'];
+                  'undone', 'report', 'update', 'amounts', 'statistic', 'clear'];
                   
 const methods = [addFunction, addDescription, showAllTask, deleteTask,
   markAsDone, showOverdue, showSortDeadline, showReportTodo, updateTask,
-  showAmounts, showStatistics];
+  showAmounts, showStatistics, clear];
 
 const runTodoList = () => {
     for(let el of commands) {
