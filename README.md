@@ -23,6 +23,9 @@ They are:
 - **Statistic:** Show how long it took to complete the task. 
 - **Overdue:** Show which tasks are overdue. 
 
+## Preview
+![alt text](https://github.com/ukioxz/Lab4_metodology_todoapp/blob/main/preview/usage.png)
+
 ## Setup
 
 #### 1. Have Node JS installed.
